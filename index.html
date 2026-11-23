@@ -174,5 +174,16 @@
     </footer>
 
   </main>
+  <script>
+    themetoggle.addEventListener('click', () => {
+    // Check if dark mode is currently active (either forced or via system)
+    const isDark = root.style.colorScheme === "dark" || 
+      (!root.style.colorScheme && window.matchMedia(("prefers-color-scheme: dark")).matches);
+
+    // Force the opposite scheme
+    root.style.colorScheme = isDark ? "light" : "dark";
+  });
+  </script>
 </body>
+
 </html>
