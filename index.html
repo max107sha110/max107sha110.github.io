@@ -9,12 +9,13 @@
   <style>
 
     :root {
-      --blue: #00adff;
+      color-scheme: light dark;
+      --accent-alt: light-dark(#00adff, #00adff);
       /* main accent color*/
-      --sage-green: #93907e;
-      --text: #ffffff;
-      --muted: #5f6f7c;
-      --background: #000000;
+      --accent: #93907e;
+      --text: light-dark(#000000, #ffffff);
+      --muted: light-dark(#5f6f7c, #888888);
+      --background: light-dark(#ffffff, #000000);
     }
 
     body {
@@ -43,7 +44,7 @@
       line-height: 112px;
       margin: 0 auto 16px;
       border-radius: 50%;
-      background: var(--sage-green);
+      background: var(--accent);
     }
 
     h1 {
@@ -59,19 +60,19 @@
 
     h2 {
       font-size: 1.3rem;
-      color: var(--blue);
-      border-bottom: 2px solid var(--sage-green);
+      color: var(--accent-alt);
+      border-bottom: 2px solid var(--accent);
       padding-bottom: 6px;
       margin-top: 36px;
     }
 
     a {
-      color: var(--blue);
+      color: var(--accent-alt);
       font-weight: 600;
     }
 
     .card {
-      background: var(--sage-green);
+      background: var(--accent);
       border-radius: 12px;
       padding: 16px 20px;
       margin: 12px 0;
