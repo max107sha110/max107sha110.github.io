@@ -11,11 +11,13 @@
     :root {
       color-scheme: light dark;
       --accent-alt: light-dark(#00adff, #00adff);
-      /* main accent color*/
       --accent: #93907e;
+      
       --text: light-dark(#000000, #ffffff);
       --muted: light-dark(#5f6f7c, #888888);
       --background: light-dark(#ffffff, #000000);
+
+      --green-bright: light-dark(#32cd32, #00ff00);
     }
 
     body {
@@ -113,7 +115,7 @@
     .switch-theme-button {
       min-height: 38px;
       padding: 0 13px;
-      color: var(--accent);
+      color: var(--text);
       background: var(--muted);
       border: 0;
       font-size: 12px;
@@ -123,7 +125,7 @@
       margin-right: auto;
     }
     
-    .switch-theme-button:hover { background: var(--accent); }
+    .switch-theme-button:hover { background: var(--green-bright); }
     .switch-theme-button:active { transform: translateY(1px); }
     .switch-theme-button:disabled { cursor: not-allowed; opacity: .55; }
   </style>
@@ -197,7 +199,7 @@
   </main>
   <script>
     const themetoggle = document.getElementById("theme-toggle");
-    themetoggle.addEventListener('click', () => {
+    themetoggle.addEventListener("click", () => {
     // Check if dark mode is currently active (either forced or via system)
     const isDark = root.style.colorScheme === "dark" || 
       (!root.style.colorScheme && window.matchMedia(("prefers-color-scheme: dark")).matches);
