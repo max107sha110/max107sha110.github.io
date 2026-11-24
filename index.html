@@ -93,7 +93,20 @@
       color: var(--muted);
       font-size: 0.9rem;
     }
-    .tertiary-button {
+    .button, .switch-theme-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: background .16s ease, transform .16s ease;
+      
+    }
+    .switch-theme-button {
       min-height: 38px;
       padding: 0 13px;
       color: var(--accent);
@@ -115,7 +128,7 @@
 
       <h1>Hi, I'm Max.</h1>
       <div class="theme-toggle-container">
-      <button class="tertiary-button" id="theme-toggle" type="button" aria-label="Toggle dark mode">Toggle Theme</button>
+      <button class="switch-theme-button" id="theme-toggle" type="button" aria-label="Toggle dark mode">Toggle Theme</button>
       </div>
       <p class="tagline" aria-label="Quick description of me">
         GHCHS Student '30, avid golfer.
