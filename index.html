@@ -198,15 +198,29 @@
 
   </main>
   <script>
+      function setTheme(theme) {
+      if (theme === "light" || theme === "dark") {
+        document.documentElement.dataset.theme = theme;
+        try {
+          localStorage.setItem("theme", theme);
+        } catch (_) {}
+      } 
+      else {
+        delete document.documentElement.dataset.theme;
+        try {
+          localStorage.removeItem("theme");
+        } catch (_) {}
+      }
+    }
+    
     const root = document.documentElement;
     const themetoggle = document.getElementById("theme-toggle");
     themetoggle.addEventListener("click", () => {
     // Check if dark mode is currently active (either forced or via system)
     const isDark = root.style.colorScheme === "dark" || 
       (!root.style.colorScheme && window.matchMedia(("prefers-color-scheme: dark")).matches);
-
-    // Force the opposite scheme
-    root.style.colorScheme = isDark ? "light" : "dark";
+    theme = isDark ? "light" : "dark";
+    setTheme(theme);
   });
   </script>
 </body>
