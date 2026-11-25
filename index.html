@@ -198,29 +198,19 @@
 
   </main>
   <script>
-      function setTheme(theme) {
-      if (theme === "light" || theme === "dark") {
-        document.documentElement.dataset.theme = theme;
-        try {
-          localStorage.setItem("theme", theme);
-        } catch (_) {}
-      } 
-      else {
-        delete document.documentElement.dataset.theme;
-        try {
-          localStorage.removeItem("theme");
-        } catch (_) {}
-      }
-    }
-    
-    const root = document.documentElement;
-    const themetoggle = document.getElementById("theme-toggle");
-    themetoggle.addEventListener("click", () => {
-    // Check if dark mode is currently active (either forced or via system)
-    const isDark = root.style.colorScheme === "dark" || 
-      (!root.style.colorScheme && window.matchMedia(("prefers-color-scheme: dark")).matches);
-    theme = isDark ? "light" : "dark";
-    setTheme(theme);
+      const toggleBtn = document.querySelector("theme-toggle");
+      
+      const getEffectiveTheme = () => {
+        const saved = document.documentElement.dataset.theme;
+        if (saved === "light" || saved === "dark") return saved;
+        return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      };
+      
+      toggleBtn.addEventListener("click", () => {
+        const next = getEffectiveTheme() === "dark" ? "light" : "dark";
+        document.documentElement.dataset.theme = next;
+        document.cookie = `theme=${next}; path=/; max-age=31536000; SameSite=Lax`;
+      });
   });
   </script>
 </body>
